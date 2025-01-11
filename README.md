@@ -1,8 +1,8 @@
-## OnlineElection
+# OnlineElection
 
-OnlineElection is a small python django site that allows registered users to vote for a candidate choosen among themselves.
+OnlineElection is a small [python django](https://www.djangoproject.com/) site that allows registered users to vote for a candidate choosen among themselves.
 
-This software takes numerouse ideas from CayumanDjango developed by ralamos and also is a good starting project to learn django.
+This software takes numerous ideas from [CayumanDjango developed by ralamos](https://github.com/tomgranuja/CayumanDjango) and also is a good starting project to learn django.
 
 ## Install
 
@@ -16,10 +16,9 @@ $ python -m ~/.venv/dj
 $ source ~/.venv/dj/bin/activate
 
 # No need --user because on a virtual env.
-(dj)$ pip install django
+(dj)$ pip install django==5.1
 (dj)$ python -m django --version
 (dj)$ deactivate
-$
 ```
 
 The next time this environment is needed
@@ -63,7 +62,7 @@ Create the [django default database](https://docs.djangoproject.com/en/5.1/intro
 
 The application server now is ready to run, but only the administrator user is registered.
 
-To add new users run the server and go to the admin site [](http://127.0.0.1:8000/admin).
+To add new users run the server and go to the admin site [http://127.0.0.1:8000/admin]().
 
 ```bash
 # Run the server
@@ -74,7 +73,7 @@ To add new users run the server and go to the admin site [](http://127.0.0.1:800
 
 Navigate to Users to add new users. Users that need to vote must use a chilean RUT as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allows the users to vote.
 
-Finally, click at logout and navigate to site index [](http://127.0.0.1:8000) to authenticate as a regular user and vote.
+Finally, click at logout and navigate to site index [http://127.0.0.1:8000]() to authenticate as a regular user and vote.
 
 ## Local vars and secrets
 
@@ -99,13 +98,13 @@ $ python -c "import secrets; print(secrets.token_urlsafe(38))"
 
 ### Time zone
 
-See [Time zones](https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/) for an explanation of the time zone settings needed. In brief when time zone support is enabled, django store UTC datetime data in the database, use time zone aware objects internally and translate them to the end user time zone in templates and forms.
+See [Time zones](https://docs.djangoproject.com/en/5.1/topics/i18n/timezones/) for an explanation of the time zone settings needed. In brief when time zone support is enabled, django stores UTC datetime data in the database, use time zone aware objects internally and translate them to the end user time zone in templates and forms.
 
 Available time zones can be consulted in python with `zoneinfo.available_timezones()`
 
 ### Local settings example
 
-This is an example `.local_settings` file with a secret key and a chilean time zone.
+This is an example `eleccion/.local_settings` file with a secret key and a chilean time zone.
 
 ```bash
 SECRET_KEY = M1ikEok2WtfOatyf7xAaLHO-BsL1OlSVNpMpSX_kMZyajVhEZDI
