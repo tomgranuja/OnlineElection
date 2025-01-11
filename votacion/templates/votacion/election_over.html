@@ -1,0 +1,50 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Votacion terminada</title>
+{% endblock %}
+  
+{% block body_content %}
+    <div class="content">
+      
+      <div class="content-section">
+        <h2>La votación ya terminó</h2>
+        
+        <p>{{ user.get_full_name }} no es posible votar debido a que el periodo de votación ya se ha terminado. Esta fue su programación:</p>
+        
+        <table>
+          <tr>
+            <th>Inicio</th> <td>{{ election.start|date:"Y-m-d H:i:s e" }}</td>
+          </tr>
+          <tr>
+            <th>Fin</th>    <td>{{ election.end|date:"Y-m-d H:i:s e" }}</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="content-section">
+        <h2>Resultados</h2>
+        <table id="results-table">
+          <thead>
+            <tr><th>Candidato</th><th>Votos</th></tr>
+          </thead>
+          <tbody>
+          {% for candidate, votes in count.items %}
+            <tr>
+              {% if candidate in "Blancos,Nulos" %}
+                <td><span class="secondary">{{ candidate }}</span></td>
+                <td><span class="secondary">{{ votes }}</span></td>
+              {% else %}
+                <td>{{ candidate }}</td>
+                <td>{{ votes }}</td>
+              {% endif%}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+{% endblock %}
+    
+<!-- {% block footer %} {% endblock%} -->

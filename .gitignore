@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Django stuff:
+eleccion/local_settings.py
+db.sqlite3
+
+# Kate and dolphin
+*.kate-swp
+.directory
+
+# Personal notes
+PersonalNotes

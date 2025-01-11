@@ -1,0 +1,32 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Esperando eleccion</title>
+{% endblock %}
+
+{% block body_content %}
+    <div class="content">
+      <div class="content-section">
+        <h2>La votación no ha comenzado</h2>
+        
+        <p>{{ user.get_full_name }} la votación aún no comienza. Revisa la programación.</p>
+        
+        <table>
+          <tr>
+            <th>Inicio</th> <td>{{ election.start|date:"Y-m-d H:i:s e" }}</td>
+          </tr>
+          <tr>
+            <th>Fin</th>    <td>{{ election.end|date:"Y-m-d H:i:s e" }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="content-section">
+        <form action="{% url 'vote' %}" method="get">
+          {% csrf_token %}
+          <button class="button" type="submit">Reintentar</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}
+
+<!-- {% block footer %} {% endblock%} -->

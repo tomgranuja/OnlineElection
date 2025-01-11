@@ -1,0 +1,91 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Candidatos directiva</title>
+{% endblock %}
+  
+{% block body_content %}
+    <div class="content">
+      {% if election.is_in_the_past %}
+        <div class="content-section">
+          <h2 id="results-title">Resultados</h2>
+          <table id="results-table">
+            <thead>
+              <tr><th>Candidato</th><th>Votos</th></tr>
+            </thead>
+            <tbody>
+            {% for candidate, votes in count.items %}
+              <tr>
+                {% if candidate in "Blancos,Nulos" %}
+                  <td><span class="secondary">{{ candidate }}</span></td>
+                  <td><span class="secondary">{{ votes }}</span></td>
+                {% else %}
+                  <td>{{ candidate }}</td>
+                  <td>{{ votes }}</td>
+                {% endif%}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>  
+      {% endif %}
+      
+      <div class="content-section">
+        <h2>Horario de elección</h2>
+        {% if election.is_active %}
+          <p>El sistema de votación actualmente está activo.</p>
+        {% else %}
+          <p>El sistema de votación ahora se encuentra inactivo.</p>
+        {% endif%}
+        <table>
+          <tr>
+            <th>Fecha</th><td>{{ election }}</td>
+          </tr>
+          <tr>
+            <th>Inicio</th><td>{{ election.start|date:"H:i" }} horas</td>
+          </tr>
+          <tr>
+            <th>Término</th><td>{{ election.end|date:"H:i" }} horas</td>
+          </tr>
+        </table>
+      </div>
+      
+      
+      <div class="content-section">
+        {% if election.is_active and not user.is_authenticated%}
+          <form action="{% url 'vote' %}">
+            <input class="button" type="submit" value="Votar con RUT y PASSWORD">
+          </form>
+        {% endif %}
+      </div>
+
+      
+      <div class="content-section">
+        <h2>Candidatos</h2>
+        
+          <ul>
+      <!-- user_voted must be proportionated in the view as a context dict entry and user_voted itself is a dict with user name keys and boolean values that show if the user has voted. -->
+            {% for name,voted in user_voted.items %}
+              {% if voted %}
+                <li>{{ name }} (ya votó)</li>
+              {% else %}
+                <li>{{ name }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+{% endblock %}
+
+{% block exit_form %}
+  {% if user.is_authenticated %}
+    <p> Has accedido como {{ user.get_full_name }} </p>
+    <form action="{% url 'logout' %}?next={{ request.path }}" method="post">
+      {% csrf_token %}
+      <input class="button" type="submit" value="Salir">
+    </form>
+  {% endif %}
+    </div>
+{% endblock %}
+
+<!-- {% block footer %} {% endblock%} -->

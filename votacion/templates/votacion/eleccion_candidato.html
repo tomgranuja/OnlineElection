@@ -1,0 +1,66 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Candidato directiva</title>
+{% endblock %}
+  
+{% block body_content %}
+    <form class="content election-form" action="{% url 'vote' %}" method="post">
+      {% csrf_token %}
+    <h2 id="vote-title">{{ user.first_name }} marca tu voto</h2>
+    <fieldset class="candidate-choices">
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      
+      {% for p in profiles %}
+        <label class="candidate-label not-null-choice" for="choice{{ forloop.counter }}">
+          <input type="radio" name="candidate" id="choice{{ forloop.counter }}" value="{{ p.username }}">
+          {{ p }}
+        </label>
+        
+      {% endfor %}
+      
+      <label class="candidate-label not-null-choice" for="choice-blank" id="choice-blank-label">
+        <input type="radio" name="candidate" id="choice-blank" value="blank">
+        En blanco <br>(acepta la mayoría)
+      </label>
+      
+      <label class="candidate-label" for="null-checkbox">
+        <input type="checkbox" name="null" id=null-checkbox>
+        Anular voto
+      </label>
+
+      <input class="button" id="vote-button" type="submit" value="Votar!">
+      
+    </fieldset>
+
+  </form>
+  
+  <script>
+    function updateRadios() {
+      let radioLabels = document.getElementsByClassName("not-null-choice");
+      if (this.checked) {
+        for (let label of radioLabels) {
+          label.children[0].disabled=true;    
+        }
+      }
+      else {
+        for (let label of radioLabels) {
+          label.children[0].disabled=false;    
+        }
+      }
+    }
+     document.getElementById("null-checkbox").addEventListener('change', updateRadios);
+  </script>
+{% endblock %}
+
+{% block exit_form %}
+{% endblock %}
+
+<!-- {% block footer %} {% endblock%} -->
+
+  </head>
+  <body>
+  
+  
+  </body>
+</html>

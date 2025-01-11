@@ -1,0 +1,16 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Voto ya registrado</title>
+{% endblock %}
+  
+{% block body_content %}
+    <div class="content">
+        <h2>No puedes votar</h2>
+    
+        <p>{{ user.get_full_name }} ya votaste en esta elección.</p>
+    </div>
+{% endblock %}
+    
+<!-- {% block footer %} {% endblock%} -->
+

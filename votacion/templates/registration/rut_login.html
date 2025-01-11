@@ -1,0 +1,44 @@
+{% extends "votacion/base.html" %}
+    
+    {% block title %}
+      <title>Votacion - Login</title>
+    {% endblock %}
+    
+    {% block body_content %}
+    <div class="login-content">
+      <div class="content-section">
+        <form  class="" method="post" action="{% url 'login' %}">
+          <h2>Acceso de usuario</h2>
+          
+          {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+            <p>Por favor intenta de nuevo.</p>
+          {% endif %}
+          
+          <fieldset>
+            {% csrf_token %}
+            
+            {{ form.rut }}
+            {% if form.rut.errors %}
+              {{ form.rut.errors }}
+            {% endif%}
+            
+            {{ form.password }}
+            {% if form.password.errors %}
+              {{ form.password.errors }}
+            {% endif%}
+            
+            <input type="submit" class="button" id="access-button" value="Acceder">
+            <input type="hidden" name="next" value="{{ next }}">
+          
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    {% endblock %}
+    
+    {% block exit_form %}
+    {% endblock %}
+
+    {% block footer%}
+    {% endblock %}

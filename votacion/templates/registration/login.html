@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Votacion login</title>
+  </head>
+  <body>
+  
+  {% if form.errors %}
+    <p>Tu nombre de usuario y password no concuerdan. Por favor intenta de nuevo.</p>
+  {% endif %}
+  
+  {% if next %}
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta página. Para conseguirlo regístrate con una cuenta que si tenga acceso.</p>
+    {% else %}
+    <p>Por favor accede con tus datos para ver esta página.</p>
+    {% endif %}
+  {% endif %}
+  
+  
+  <form  method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+{{ form }}
+
+<input type="submit" value="Acceder">
+<input type="hidden" name="next" value="{{ next }}">
+  </form>
+  </body>
+</html>

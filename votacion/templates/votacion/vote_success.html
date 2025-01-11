@@ -1,0 +1,18 @@
+{% extends "votacion/base.html" %}
+
+{% block title%}
+    <title>Voto ya registrado</title>
+{% endblock %}
+  
+{% block body_content %}
+    <div class="content">
+      <div class="content-section">
+        <h2 style="color: #00b100">¡Voto guardado!</h2>
+        
+        <p>{{ user.get_full_name }} tu voto fue ingresado correctamente.</p>
+        <p>La elección de voto de cada persona queda registrada de forma anónima.</p>
+      </div>
+    </div>
+{% endblock %}
+    
+<!-- {% block footer %} {% endblock%} -->

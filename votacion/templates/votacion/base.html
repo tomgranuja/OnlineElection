@@ -1,0 +1,46 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+  
+    {% block title %}
+      <title>Eleccion online</title>
+    {% endblock %}
+    
+    <link rel="icon" type="image/x-icon" href={% static "votacion/favicon.png" %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href=" https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css " rel="stylesheet">
+    <link rel="stylesheet" href={% static "votacion/votacion.css" %} />
+    
+    
+    <style>
+    </style>
+  
+  </head>
+  <body>
+    <div class="content-page">
+    {% block body_content %}
+      <h2>Sistema de elección online</h2>
+      
+      <p>Hola {{ user.first_name }}, estas en la web del sistema de elecciones.</p>
+      
+    {% endblock %}
+    
+    {% block exit_form %}
+      {% if user.is_authenticated %}
+      <div class="content">
+        <form action="{% url 'logout' %}?next={% url 'candidatos' %}" method="post">
+          {% csrf_token %}
+          <button class="button" type="submit">Salir</button>
+        </form>
+      </div>
+      {% endif %}
+    {% endblock %}
+    {% block footer%}
+    <p>Some footer content...</p>
+    {% endblock %}
+    </div>
+  </body>
+</html>
