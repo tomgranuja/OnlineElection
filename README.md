@@ -8,11 +8,11 @@ This software takes numerous ideas from [CayumanDjango developed by ralamos](htt
 
 ### Install django in a python venv
 
-Create python venv, activate and install django:
+Create [python venv](https://docs.python.org/3/library/venv.html), activate it and install django (needs python>=3.3 and python-venv):
 
 ```bash
 $ mkdir ~/.venv
-$ python -m ~/.venv/dj
+$ python -m venv ~/.venv/dj
 $ source ~/.venv/dj/bin/activate
 
 # No need --user because on a virtual env.
@@ -71,7 +71,7 @@ To add new users run the server and go to the admin site [http://127.0.0.1:8000/
 # Go to http://127.0.0.1:8000/admin
 ```
 
-Navigate to Users to add new users. Users that need to vote must use a chilean RUT as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allows the users to vote.
+Navigate to Users to add new users. Users that need to vote must use a chilean RUT as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allow users to vote.
 
 Finally, click at logout and navigate to site index [http://127.0.0.1:8000]() to authenticate as a regular user and vote.
 
