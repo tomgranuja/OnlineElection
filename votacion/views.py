@@ -5,14 +5,14 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils import timezone
 
-from .forms import RutLoginForm
+from .forms import RunLoginForm
 from .models import Election, Profile, Vote
 
 # Create your views here.
 
-class RutLoginView(LoginView):
-    authentication_form = RutLoginForm
-    template_name = 'registration/rut_login.html'
+class RunLoginView(LoginView):
+    authentication_form = RunLoginForm
+    template_name = 'registration/run_login.html'
 
 def index_raw(request):
     block = (

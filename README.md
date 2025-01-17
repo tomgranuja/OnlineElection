@@ -71,9 +71,25 @@ To add new users run the server and go to the admin site [http://127.0.0.1:8000/
 # Go to http://127.0.0.1:8000/admin
 ```
 
-Navigate to Users to add new users. Users that need to vote must use a chilean RUT as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allow users to vote.
+Navigate to Users to add new users. Users that need to vote must use a chilean RUN as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allow users to vote.
 
 Finally, click at logout and navigate to site index [http://127.0.0.1:8000]() to authenticate as a regular user and vote.
+
+## Initial candidates load from csv file
+
+In order to import candidates from a local csv file, `import_from.py` management script is proportionated:
+
+```bash
+(dj) OnlineElection$ python manage.py import_from CSV_FILE
+```
+
+See the example csv file below:
+
+```csv
+username,first_name,last_name,cel,pass
+1234567-4,John,Dowe,+569 8888 88 88,johnpass*
+22987654-6,Peter,Parker,,peterpass*
+```
 
 ## Local vars and secrets
 

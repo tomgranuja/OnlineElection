@@ -12,6 +12,6 @@ urlpatterns = [
     path("before_election", views.before_election, name="before_election"),
     
     # path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
-    path("accounts/login/", views.RutLoginView.as_view(), name="login"),
+    path("accounts/login/", views.RunLoginView.as_view(), name="login"),
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
