@@ -23,7 +23,7 @@ class RunLoginForm(AuthenticationForm):
         if run_is_valid(run):
             username = run_clean(run)
         else:
-            raise self.get_invalid_rut_error()
+            raise self.get_invalid_run_error()
         
         password = self.cleaned_data.get("password")
         if password:
@@ -39,9 +39,9 @@ class RunLoginForm(AuthenticationForm):
 
         return self.cleaned_data
     
-    def get_invalid_rut_error(self):
+    def get_invalid_run_error(self):
         return ValidationError(
-            self.error_messages["invalid_rut"],
-            code="invalid_rut",
+            self.error_messages["invalid_run"],
+            code="invalid_run",
             params={"username": self.username_field.verbose_name},
         )
