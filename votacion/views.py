@@ -34,12 +34,11 @@ def index_raw(request):
 def candidatos(request):
     election = Election.objects.last()
     profiles = Profile.objects.filter(is_candidate=True)
-    user_voted = { p.fullname(): p.voted for p in profiles }
     count = Vote.objects.vote_count_by_fullname()
     context = { 
         'election': election,
         'now_date': timezone.now(),
-        'user_voted': user_voted,
+        'profiles': profiles,
         'count': count,
         }
     return render(request, 'votacion/candidatos.html', context)

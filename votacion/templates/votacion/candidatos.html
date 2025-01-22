@@ -65,12 +65,8 @@
         
           <ul>
       <!-- user_voted must be proportionated in the view as a context dict entry and user_voted itself is a dict with user name keys and boolean values that show if the user has voted. -->
-            {% for name,voted in user_voted.items %}
-              {% if voted %}
-                <li>{{ name }} (ya votó)</li>
-              {% else %}
-                <li>{{ name }}</li>
-              {% endif %}
+            {% for p in profiles %}
+              <li>{{ p.fullname }}</li>
             {% endfor %}
           </ul>
         </div>
