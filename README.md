@@ -71,7 +71,7 @@ To add new users run the server and go to the admin site [http://127.0.0.1:8000/
 # Go to http://127.0.0.1:8000/admin
 ```
 
-Navigate to Users to add new users. Users that need to vote must use a chilean RUN as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allow users to vote.
+Navigate to Users to add new users. Users that need to vote must use a chilean RUN as username (12345678-5). Then navigate to Profile to add new profiles for each user. This allow users to vote. Also in Profile check "is candidate" in order to show that user in the candidate list.
 
 Finally, click at logout and navigate to site index [http://127.0.0.1:8000]() to authenticate as a regular user and vote.
 
@@ -90,6 +90,8 @@ username,first_name,last_name,cel,pass
 1234567-4,John,Dowe,+569 8888 88 88,johnpass*
 22987654-6,Peter,Parker,,peterpass*
 ```
+
+Note that all users are created with a non candidate profile by default. This can be modified later at the Profile view in the [admin site](http://127.0.0.1:8000/admin).
 
 ## Local vars and secrets
 

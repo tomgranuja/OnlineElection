@@ -15,6 +15,10 @@ class Profile(models.Model):
         "cell phone", max_length=30,
         blank=True,
         )
+    is_candidate = models.BooleanField(
+        "is candidate",
+        default=False,
+        )
     voted = models.BooleanField(
         "has voted",
         default=False,

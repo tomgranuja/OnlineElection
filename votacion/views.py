@@ -33,7 +33,7 @@ def index_raw(request):
 
 def candidatos(request):
     election = Election.objects.last()
-    profiles = Profile.objects.all()
+    profiles = Profile.objects.filter(is_candidate=True)
     user_voted = { p.fullname(): p.voted for p in profiles }
     count = Vote.objects.vote_count_by_fullname()
     context = { 
@@ -64,7 +64,7 @@ def vote(request):
            user.vote(name=request.POST['candidate'])
         return HttpResponseRedirect(reverse("vote_success"))
     else:
-        context = {'profiles': Profile.objects.all(),}
+        context = {'profiles': Profile.objects.filter(is_candidate=True),}
         return render(request, 'votacion/eleccion_candidato.html', context)
 
 def vote_success(request):
