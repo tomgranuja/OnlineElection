@@ -5,6 +5,7 @@ __pycache__/
 # Django stuff:
 eleccion/.local_settings
 db.sqlite3
+/static/
 
 # Kate and dolphin
 *.kate-swp
