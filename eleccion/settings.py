@@ -41,7 +41,7 @@ if 'SECRET_KEY' in LOCAL_SETTINGS:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 if 'DEBUG' in LOCAL_SETTINGS:
-    DEBUG = LOCAL_SETTINGS['DEBUG']
+    DEBUG = LOCAL_SETTINGS['DEBUG'].lower() == 'true'
 
 ALLOWED_HOSTS = []
 if 'ALLOWED_HOSTS' in LOCAL_SETTINGS:
