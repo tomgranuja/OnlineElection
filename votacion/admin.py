@@ -3,6 +3,9 @@ from .models import Profile, Vote, Election
 
 # Register your models here.
 
-admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = [ '__str__', 'voted', 'is_candidate' ]
+
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Vote)
 admin.site.register(Election)
